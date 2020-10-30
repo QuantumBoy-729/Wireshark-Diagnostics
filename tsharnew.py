@@ -5,7 +5,7 @@ from ip2geotools.databases.noncommercial import DbIpCity
 
 import csv
 import pandas as pd
-os.system("tshark -c 10 'host 127.0.0.1' -w wire1.pcap")
+os.system("tshark -c 10 -f 'host 127.0.0.1' -w wire1.pcap")
 pdcap=rdpcap('wire1.pcap')
 ips=[(p[IP].src,p[IP].dst) for p in pdcap if IP in p]
 source=[]
