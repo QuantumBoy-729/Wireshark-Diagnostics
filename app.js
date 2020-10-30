@@ -14,7 +14,9 @@ const exec = require('child_process').exec;
 
 app.use(function(req, res) {
     var ip = req.clientIp;
-    console.log(ip);
+    fs.writeFile('data.txt',ip,(err,data)=>{
+    	console.log(ip);//writing data to data.txt
+    })
     var ipType = net.isIP(ip);
     fs.readFile('./project.html')
     .then(contents=>{
@@ -55,6 +57,3 @@ const server =http.createServer(app).listen(3000);
     
 //     });
 // })
-// appl.listen((req,res)=>{
-//     console.log("Working")
-// },3000)
