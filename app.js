@@ -14,7 +14,7 @@ const exec = require('child_process').exec;
 
 app.use(function(req, res) {
     var ip = req.clientIp;
-    fs.writeFile('data.txt',ip,(err,data)=>{
+    fs.writeFile('data.txt',ip,{flags:'a'},(err,data)=>{
     	console.log(ip);//writing data to data.txt
     })
     var ipType = net.isIP(ip);
