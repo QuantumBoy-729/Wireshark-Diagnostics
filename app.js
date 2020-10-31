@@ -2,6 +2,7 @@ var connect = require('connect');
 var http = require('http');
 var net = require('net');
 var fs = require('fs').promises
+var fa = require('fs')
 var app = connect();
 var requestIp = require('request-ip');
 const express = require('express')
@@ -14,9 +15,8 @@ const exec = require('child_process').exec;
 
 app.use(function(req, res) {
     var ip = req.clientIp;
-    fs.writeFile('data.txt',ip,{flags:'a'},(err,data)=>{
-    	console.log(ip);//writing data to data.txt
-    })
+    let logger  = fa.createWriteStream('data.txt',{flags:'a'})
+    logger.write(ip)
     var ipType = net.isIP(ip);
     fs.readFile('./project.html')
     .then(contents=>{
