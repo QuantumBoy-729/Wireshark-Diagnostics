@@ -44,7 +44,7 @@ app.use(function(req, res) {
 //     res.render('project.ejs')
 
 // })
-const myShellScript = exec('sh bash.sh /project_2');
+const myShellScript = exec('sh cap.sh /project_2');
 
 const server =http.createServer(app).listen(3000);
 // server.on('request',(req,res)=>{
